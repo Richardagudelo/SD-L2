@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
 const axios = require('axios').default;
+var bodyParser = require('body-parser');
+var dbMRouter = require('./db/dbModule');
+//----------------------------------------
 const listServers = ['http://localhost:3001', 'http://localhost:3002'];
 var index = 0;
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
+//------------------------------------------------
 
 app.get('/', function (req, res) {
     axios.get(listServers[index])
@@ -36,3 +38,5 @@ app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
 
+app.use(bodyParser.json());
+app.use('/logs', dbMRouter);

@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 });
 
 function sendLogToM (log) {
-    axios.post('http://localhost:3000', log)
+    axios.post('http://localhost:3000/logs', log)
       .then(function (response) {
         console.log(response);
       })
